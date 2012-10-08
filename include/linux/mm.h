@@ -266,13 +266,13 @@ struct inode;
 /* It's valid only if the page is free path or free_list */
 static inline void set_freepage_migratetype(struct page *page, int migratetype)
 {
-	page->index = migratetype;
+	set_page_private(page, migratetype);
 }
 
 /* It's valid only if the page is free path or free_list */
 static inline int get_freepage_migratetype(struct page *page)
 {
-	return page->index;
+	return page_private(page);
 }
 
 /*
