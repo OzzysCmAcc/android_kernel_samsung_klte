@@ -3879,6 +3879,7 @@ int mdss_mdp_hist_collect(struct mdp_histogram_data *hist)
 				MDSS_MDP_REG_DSPP_HIST_CTL_BASE;
 			exp_sum = (mdata->mixer_intf[dspp_num].width *
 					mdata->mixer_intf[dspp_num].height);
+
 			if (ret)
 				temp_ret = ret;
 			ret = pp_hist_collect(hist, hists[i], ctl_base,
@@ -3979,6 +3980,7 @@ int mdss_mdp_hist_collect(struct mdp_histogram_data *hist)
 			hist_info = &pipe->pp_res.hist;
 			ctl_base = pipe->base +
 				MDSS_MDP_REG_VIG_HIST_CTL_BASE;
+
 			if (ret)
 				temp_ret = ret;
 			ret = pp_hist_collect(hist, hist_info, ctl_base,
