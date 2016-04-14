@@ -109,9 +109,14 @@ enum pageflags {
 	PG_compound_lock,
 #endif
 	PG_readahead,		/* page in a readahead window */
+<<<<<<< HEAD
 #ifdef CONFIG_SCFS_LOWER_PAGECACHE_INVALIDATION
 	PG_scfslower,
 	PG_nocache,
+=======
+#ifdef CONFIG_ZCACHE
+	PG_was_active,
+>>>>>>> acc2b97... mm: Backport ZCache from QC kernel 3.18
 #endif
 	__NR_PAGEFLAGS,
 #if defined(CONFIG_CMA_PAGE_COUNTING)
@@ -217,6 +222,11 @@ PAGEFLAG(Reserved, reserved) __CLEARPAGEFLAG(Reserved, reserved)
 PAGEFLAG(SwapBacked, swapbacked) __CLEARPAGEFLAG(SwapBacked, swapbacked)
 
 __PAGEFLAG(SlobFree, slob_free)
+#ifdef CONFIG_ZCACHE
+PAGEFLAG(WasActive, was_active)
+#else
+PAGEFLAG_FALSE(WasActive)
+#endif
 
 /*
  * Private page markings that may be used by the filesystem that owns the page
