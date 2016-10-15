@@ -102,6 +102,10 @@ static int set_cpu_freq(struct cpufreq_policy *policy, unsigned int new_freq,
 	struct sched_param param = { .sched_priority = MAX_RT_PRIO-1 };
 	unsigned long rate;
 
+#ifdef CONFIG_SEC_PM
+	extern int jig_boot_clk_limit;
+#endif
+
 #ifdef CONFIG_SEC_DVFS
 	if (lower_limit_freq || upper_limit_freq) {
 		unsigned int t_freq = new_freq;
@@ -145,8 +149,6 @@ static int set_cpu_freq(struct cpufreq_policy *policy, unsigned int new_freq,
 	rate = new_freq * 1000;
 
 #ifdef CONFIG_SEC_PM
-		extern int jig_boot_clk_limit;
-
 		if (jig_boot_clk_limit == 1) { //limit 1.5Ghz to block whitescreen during 50 secs on JIG
 			unsigned long long t = sched_clock();
 			do_div(t, 1000000000);
