@@ -16,7 +16,6 @@
 #include <linux/module.h>
 #include <linux/slab.h>
 #include <linux/mm.h>
-#include <linux/memory_alloc.h>
 #include <asm/cacheflush.h>
 #include <mach/memory.h>
 #include <mach/scm.h>

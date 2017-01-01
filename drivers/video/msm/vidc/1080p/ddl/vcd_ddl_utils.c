@@ -10,7 +10,6 @@
  * GNU General Public License for more details.
  *
  */
-#include <linux/memory_alloc.h>
 #include <linux/delay.h>
 #include <mach/iommu_domains.h>
 #include <mach/subsystem_restart.h>

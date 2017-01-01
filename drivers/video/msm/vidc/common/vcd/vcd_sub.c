@@ -10,7 +10,6 @@
  * GNU General Public License for more details.
  *
  */
-#include <linux/memory_alloc.h>
 #include <asm/div64.h>
 #include <media/msm/vidc_type.h>
 #include <mach/iommu_domains.h>

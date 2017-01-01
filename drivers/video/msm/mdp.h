@@ -22,7 +22,6 @@
 #include <linux/fb.h>
 #include <linux/hrtimer.h>
 #include <linux/msm_mdp.h>
-#include <linux/memory_alloc.h>
 #include <mach/hardware.h>
 #include <linux/msm_ion.h>
 

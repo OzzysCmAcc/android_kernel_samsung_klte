@@ -10,7 +10,6 @@
  * GNU General Public License for more details.
  *
  */
-#include <linux/memory_alloc.h>
 #include <media/msm/vidc_type.h>
 #include "vcd_ddl_utils.h"
 #include "vcd_res_tracker_api.h"

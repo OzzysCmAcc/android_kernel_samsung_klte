@@ -20,7 +20,6 @@
 #include <mach/msm_memtypes.h>
 #include <mach/iommu_domains.h>
 #include <linux/interrupt.h>
-#include <linux/memory_alloc.h>
 #include <asm/sizes.h>
 #include <media/msm/vidc_init.h>
 #include "vidc.h"
