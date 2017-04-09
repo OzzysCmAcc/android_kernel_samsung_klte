@@ -695,10 +695,6 @@ static int sdcardfs_permission(struct vfsmount *mnt, struct inode *inode, int ma
 		release_top(SDCARDFS_I(inode));
 		WARN(1, "Top value was null!\n");
 		return -EINVAL;
-	/* Ensure owner is up to date */
-	if (inode->i_uid != top->i_uid) {
-		SDCARDFS_I(inode)->d_uid = SDCARDFS_I(top)->d_uid;
-		fix_derived_permission(inode);
 	}
 
 	/*
