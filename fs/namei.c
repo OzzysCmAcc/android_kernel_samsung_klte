@@ -2156,9 +2156,9 @@ int vfs_create2(struct vfsmount *mnt, struct inode *dir, struct dentry *dentry,
 EXPORT_SYMBOL(vfs_create2);
 
 int vfs_create(struct inode *dir, struct dentry *dentry, umode_t mode,
-		bool want_excl)
+		struct nameidata *nd)
 {
-	return vfs_create2(NULL, dir, dentry, mode, want_excl);
+	return vfs_create2(NULL, dir, dentry, mode, nd);
 }
 EXPORT_SYMBOL(vfs_create);
 
@@ -2696,10 +2696,10 @@ SYSCALL_DEFINE4(mknodat, int, dfd, const char __user *, filename, umode_t, mode,
 		goto out_drop_write;
 	switch (mode & S_IFMT) {
 		case 0: case S_IFREG:
-			error = vfs_create2(path.mnt, path.dentry->d_inode,dentry,mode,NULL);
+			error = vfs_create2(path.mnt,path.dentry->d_inode,dentry,mode,NULL);
 			break;
 		case S_IFCHR: case S_IFBLK:
-			error = vfs_mknod2(path.mnt, path.dentry->d_inode,dentry,mode,
+			error = vfs_mknod2(path.mnt,path.dentry->d_inode,dentry,mode,
 					new_decode_dev(dev));
 			break;
 		case S_IFIFO: case S_IFSOCK:

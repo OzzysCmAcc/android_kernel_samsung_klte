@@ -1734,11 +1734,9 @@ static int do_remount(struct path *path, int flags, int mnt_flags,
 		err = change_mount_flags(path->mnt, flags);
 	else {
 		err = do_remount_sb2(path->mnt, sb, flags, data, 0);
-		namespace_lock();
 		br_write_lock(&vfsmount_lock);
 		propagate_remount(mnt);
 		br_write_unlock(&vfsmount_lock);
-		namespace_unlock();
 	}
 	if (!err) {
 		br_write_lock(&vfsmount_lock);

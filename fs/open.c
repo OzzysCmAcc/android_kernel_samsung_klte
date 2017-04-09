@@ -81,7 +81,7 @@ static long do_sys_truncate(const char __user *pathname, loff_t length)
 	if (error)
 		goto out;
 	inode = path.dentry->d_inode;
-	mnt = path->mnt;
+	mnt = path.mnt;
 
 	/* For directories it's -EISDIR, for other non-regulars - -EINVAL */
 	error = -EISDIR;
@@ -417,7 +417,7 @@ SYSCALL_DEFINE1(fchdir, unsigned int, fd)
 		goto out;
 
 	inode = file->f_path.dentry->d_inode;
-	mnt = f.file->f_path.mnt;
+	mnt = file->f_path.mnt;
 
 	error = -ENOTDIR;
 	if (!S_ISDIR(inode->i_mode))
