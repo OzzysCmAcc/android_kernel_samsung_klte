@@ -109,14 +109,12 @@ enum pageflags {
 	PG_compound_lock,
 #endif
 	PG_readahead,		/* page in a readahead window */
-<<<<<<< HEAD
 #ifdef CONFIG_SCFS_LOWER_PAGECACHE_INVALIDATION
 	PG_scfslower,
 	PG_nocache,
-=======
+#endif
 #ifdef CONFIG_ZCACHE
 	PG_was_active,
->>>>>>> acc2b97... mm: Backport ZCache from QC kernel 3.18
 #endif
 	__NR_PAGEFLAGS,
 #if defined(CONFIG_CMA_PAGE_COUNTING)
