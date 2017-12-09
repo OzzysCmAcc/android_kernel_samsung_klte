@@ -102,7 +102,6 @@ enum {
 	BINDER_DEBUG_BUFFER_ALLOC           = 1U << 13,
 	BINDER_DEBUG_PRIORITY_CAP           = 1U << 14,
 	BINDER_DEBUG_BUFFER_ALLOC_ASYNC     = 1U << 15,
-	BINDER_DEBUG_TOP_ERRORS		    = 1U << 16,
 };
 static uint32_t binder_debug_mask;
 
@@ -3481,10 +3480,8 @@ err_get_vm_area_failed:
 err_already_mapped:
 	mutex_unlock(&binder_mmap_lock);
 err_bad_arg:
-	binder_debug(BINDER_DEBUG_TOP_ERRORS,
-		     "binder_mmap: %d %lx-%lx %s failed %d\n",
-		     proc->pid, vma->vm_start, vma->vm_end, failure_string,
-		     ret);
+	pr_err("binder_mmap: %d %lx-%lx %s failed %d\n",
+		proc->pid, vma->vm_start, vma->vm_end, failure_string, ret);
 	return ret;
 }
 
